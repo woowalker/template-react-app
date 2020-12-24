@@ -17,11 +17,12 @@ class Timer {
 
 const myTimer = new Timer()
 
-function App () {
+function App (props) {
   return (
     <div>
       <div onClick={() => myTimer.increaseTimer()}>click me</div>
       <div>myTimer: {myTimer.secondsPassed}</div>
+      <div onClick={() => { props.history.push('/about') }}>route to about</div>
     </div>
   )
 }

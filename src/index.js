@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import reportWebVitals from './reportWebVitals'
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+        <Suspense fallback={<h2>加载中...</h2>}>
+          <Redirect exact from='/' to='/home' />
+          <Route exact path='/home' component={React.lazy(() => import('./App'))} />
+          <Route exact path='/about' component={React.lazy(() => import('./About'))} />
+        </Suspense>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 )
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()
