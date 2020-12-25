@@ -1,23 +1,16 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
+import Routes from './routes'
 
+/**
+ * 为什么不直接将 Router 集成在 Routes 组件里
+ * 是因为我需要在 Routes 组件里拿到 history 实例（react-router-dom 的 useHistory hooks）
+ * 并通过 history 监听路由变化
+ */
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-        <Suspense fallback={<h2>加载中...</h2>}>
-          <Redirect exact from='/' to='/home' />
-          <Route exact path='/home' component={React.lazy(() => import('./App'))} />
-          <Route exact path='/about' component={React.lazy(() => import('./About'))} />
-        </Suspense>
-      </Switch>
-    </Router>
+    <Router><Routes /></Router>
   </React.StrictMode>,
   document.getElementById('root')
 )

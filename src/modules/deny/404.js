@@ -1,13 +1,12 @@
-// About.js
 import React from 'react'
 
-function About (props) {
+function NoFound (props) {
   return (
     <div>
-      <h2>welcome to About page</h2>
+      <h2>找不到该页面</h2>
       <div onClick={() => { props.history.goBack() }}>nav back</div>
     </div>
   )
 }
 
-export default About
+export default NoFound
