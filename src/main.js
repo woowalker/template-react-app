@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react'
 import {
-  HashRouter as Router,
+  Router,
   Switch,
   Route,
   Redirect
@@ -31,7 +31,7 @@ function Main () {
 
   return (
     <Layout pathname={pathname}>
-      <Router>
+      <Router history={history}>
         <Switch>
           <Suspense fallback={<h2>加载中...</h2>}>
             {
