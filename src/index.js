@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router } from 'react-router-dom'
+import history from '@/plugins/history'
 import Routes from './routes'
 
 /**
@@ -10,7 +11,7 @@ import Routes from './routes'
  */
 ReactDOM.render(
   <React.StrictMode>
-    <Router><Routes /></Router>
+    <Router history={history}><Routes /></Router>
   </React.StrictMode>,
   document.getElementById('root')
 )
